@@ -74,7 +74,7 @@ describe("Carousel", () => {
       container.querySelector('img[alt="testing image 1"]')
     ).not.toBeInTheDocument();
 
-    // move forward in the carousel
+    // move backward in the carousel
     const leftArrow = container.querySelector(".bi-arrow-left-circle");
     fireEvent.click(leftArrow);
 
@@ -101,9 +101,31 @@ describe("Carousel", () => {
       container.querySelector('img[alt="testing image 1"]')
     ).toBeInTheDocument();
 
-    console.log(container.getElementsByClassName('bi-arrow-left-circle')[0]);
     expect(container.getElementsByClassName('bi-arrow-left-circle')[0]
-    ).not.toBeInTheDocument();
+    ).toBe(undefined);
+  });
+
+  // right button disappears
+  it("should not show right arrow from first image", function () {
+    const { container } = render(
+      <Carousel
+        photos={TEST_IMAGES}
+        title="images for testing"
+      />
+    );
+
+    // move forward in the carousel
+    const rightArrow = container.querySelector(".bi-arrow-right-circle");
+    fireEvent.click(rightArrow);
+    fireEvent.click(rightArrow);
+
+    // expect the third image to show
+    expect(
+      container.querySelector('img[alt="testing image 3"]')
+    ).toBeInTheDocument();
+
+    expect(container.getElementsByClassName('bi-arrow-right-circle')[0]
+    ).toBe(undefined);
   });
 })
 

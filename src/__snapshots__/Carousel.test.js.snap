@@ -11,9 +11,7 @@ exports[`Carousel matches snapshot 1`] = `
     <div
       class="Carousel-main"
     >
-      <i
-        class="bi bi-arrow-left-circle"
-      />
+      <span />
       <div
         class="Card"
       >
