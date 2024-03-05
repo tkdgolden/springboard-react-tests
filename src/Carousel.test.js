@@ -2,6 +2,10 @@ import { render, fireEvent } from "@testing-library/react";
 import Carousel from "./Carousel";
 import TEST_IMAGES from "./_testCommon.js";
 
+import * as matchers from '@testing-library/jest-dom/matchers'
+
+expect.extend(matchers)
+
 describe("Carousel", () => {
 
   // smoke test
@@ -21,6 +25,7 @@ describe("Carousel", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
+  // starter test
   it("works when you click on the right arrow", function () {
     const { container } = render(
       <Carousel
