@@ -86,5 +86,24 @@ describe("Carousel", () => {
       container.querySelector('img[alt="testing image 1"]')
     ).toBeInTheDocument();
   });
+
+  // left button disappears
+  it("should not show left arrow from first image", function () {
+    const { container } = render(
+      <Carousel
+        photos={TEST_IMAGES}
+        title="images for testing"
+      />
+    );
+
+    // expect the first image to show
+    expect(
+      container.querySelector('img[alt="testing image 1"]')
+    ).toBeInTheDocument();
+
+    console.log(container.getElementsByClassName('bi-arrow-left-circle')[0]);
+    expect(container.getElementsByClassName('bi-arrow-left-circle')[0]
+    ).not.toBeInTheDocument();
+  });
 })
 
